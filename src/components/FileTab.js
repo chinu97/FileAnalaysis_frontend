@@ -6,6 +6,7 @@ import axios from 'axios';
 import PaginationDiv from "./PaginationDiv";
 import SynonymsComponent from "./SynonymsComponent";
 import ScrollableText from "./ScrollableText";
+import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
     modalContainer: {
@@ -127,8 +128,8 @@ const FileTab = ({file}) => {
                 setSynonymsData(response.data);
             })
             .catch(error => {
-                setSynonymsError("Error fetching synonyms: ", error)
                 console.error('Error fetching synonyms:', error);
+                setSynonymsError(error?.response?.data?.error);
             })
             .finally(() => {
                 setSynonymsLoading(false); // Set loading to false after API call completes
@@ -146,7 +147,7 @@ const FileTab = ({file}) => {
                 setMaskingData(response.data);
             })
             .catch(error => {
-                setMaskingError("Error masking text: ", error)
+                setMaskingError(error?.response?.data?.error);
                 console.error('Error masking text:', error);
             })
             .finally(() => {

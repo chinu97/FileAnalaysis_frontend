@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import _ from 'lodash'
 import FileTab from './FileTab';
@@ -9,13 +9,25 @@ const FileUploader = () => {
     const [files, setFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
     const [showFileTabs, setShowFileTabs] = useState(false);
-
+    const allowedFileTypes = ['text/plain'];
+    const maxFileSize = 30 * 1024 * 1024; // 30 MB
+    useEffect(() => {
+        document.title = "File Analyser App"; // Change this to the desired title
+    }, []);
     const handleFileChange = async (event) => {
         const uploadedFiles = event.target.files;
         const fileDataArray = [];
 
         for (let i = 0; i < uploadedFiles.length; i++) {
             const file = uploadedFiles[i];
+            if (!allowedFileTypes.includes(file.type)) {
+                alert(`File ${file.name} is not a valid text file.`);
+                continue;
+            }
+            if (file.size > maxFileSize) {
+                alert(`File ${file.name} exceeds the maximum size limit of 30 MB.`);
+                continue;
+            }
             const fileCode = v4();
             const fileData = {
                 name: file.name,
@@ -86,7 +98,7 @@ const FileUploader = () => {
 
     return (
         <div className={'FileUploader'}>
-            <h2>File Uploader</h2>
+            <h2>File Analyser</h2>
             <input className={'FileUploader-input'} type="file" onChange={handleFileChange} multiple/>
             <button className={'FileUploader-button'} onClick={handleUpload} disabled={uploading || files.length === 0}>
                 {uploading ? 'Uploading...' : 'Upload'}
