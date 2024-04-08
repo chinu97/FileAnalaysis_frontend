@@ -6,8 +6,8 @@ import axios from 'axios';
 import PaginationDiv from "./PaginationDiv";
 import SynonymsComponent from "./SynonymsComponent";
 import ScrollableText from "./ScrollableText";
-import _ from "lodash";
-
+import config from '../config/development';
+const backendUrl = config.backendUrl;
 const useStyles = makeStyles((theme) => ({
     modalContainer: {
         display: 'flex',
@@ -67,7 +67,7 @@ const FileTab = ({file}) => {
         if (detailsModalOpen) {
             setDetailsLoading(true);
             setDetailsError('');
-            axios.get('http://localhost:3000/file-analytics/count/unique', {
+            axios.get(`${backendUrl}/file-analytics/count/unique`, {
                 params: {
                     fileCode: file.code
                 }
@@ -120,7 +120,7 @@ const FileTab = ({file}) => {
     const handleSynonymsButtonClick = () => {
         setSynonymsLoading(true);
         setSynonymsError('');
-        axios.post('http://localhost:3000/file-analytics/count/synonyms', {
+        axios.post(`${backendUrl}/file-analytics/count/synonyms`, {
             fileCode: file.code,
             words: synonymsInput,
         })
@@ -139,7 +139,7 @@ const FileTab = ({file}) => {
     const handleMaskingButtonClick = () => {
         setMaskingLoading(true);
         setMaskingError('');
-        axios.post('http://localhost:3000/file-analytics/mask/words', {
+        axios.post(`${backendUrl}/file-analytics/mask/words`, {
             fileCode: file.code,
             words: maskingInput
         })

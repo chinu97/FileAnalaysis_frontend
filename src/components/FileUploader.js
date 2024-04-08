@@ -4,7 +4,8 @@ import _ from 'lodash'
 import FileTab from './FileTab';
 import {v4} from 'uuid';
 import './FileUploader.css';
-
+import config from '../config';
+const backendUrl = config.backendUrl;
 const FileUploader = () => {
     const [files, setFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
@@ -46,7 +47,7 @@ const FileUploader = () => {
         try {
             setUploading(true);
             for (const file of files) {
-                const preSignedUrlResponse = await axios.get('http://localhost:3000/s3/generate-presigned-url', {
+                const preSignedUrlResponse = await axios.get(`${backendUrl}/s3/generate-presigned-url`, {
                     params: {
                         fileName: file.name,
                         fileCode: file.code
