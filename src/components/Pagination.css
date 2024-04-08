@@ -1,0 +1,60 @@
+/* PaginationDiv container */
+.pagination-div {
+    margin-bottom: 20px;
+}
+
+.pagination-div table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pagination-div table th,
+.pagination-div table td {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc; /* Add border */
+    padding: 8px;
+    text-align: left;
+}
+
+.pagination-div table th {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc; /* Add border */
+    padding: 8px;
+    text-align: left;
+}
+
+/* Individual item */
+.pagination-div > div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* Pagination controls container */
+.pagination-controls {
+    margin-top: 10px;
+    display: flex;
+    align-content: end; /* Add space between buttons */
+}
+
+/* Pagination control buttons */
+.pagination-controls button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover {
+    background-color: #0056b3;
+}

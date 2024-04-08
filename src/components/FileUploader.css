@@ -1,0 +1,86 @@
+.FileUploader {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* File input */
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+/* Upload button */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* File tabs container */
+.FileTabs {
+    margin-top: 20px;
+}
+
+/* File tab */
+.FileTab {
+    padding: 10px;
+    margin: 15px; /* Add margin-bottom for spacing */
+
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* File tab content */
+.FileTab-content {
+    display: flex;
+    align-items: center;
+}
+
+/* File name */
+.FileTab-name {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+/* File status */
+.FileTab-status {
+    font-weight: bold;
+}
+
+/* File progress bar */
+.FileTab-progress {
+    width: 100%;
+    height: 5px;
+    background-color: #007bff;
+    margin-top: 5px;
+}
+
+/* File progress bar (completed) */
+.FileTab-progress.completed {
+    background-color: #28a745;
+}
+
+/* File progress bar (failed) */
+.FileTab-progress.failed {
+    background-color: #dc3545;
+}
