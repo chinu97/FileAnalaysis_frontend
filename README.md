@@ -33,7 +33,7 @@ Install dependencies:
 npm install (use node 14.19.1)
 
 
-How to start the server :- PORT=3001 npm start
+How to start the server :- PORT=4000 npm start
 
 
 
@@ -66,6 +66,12 @@ FLOW DIAGRAM :-
     Mask Specific Words ------|
           |                    |
          End                  |
+
+How to build and deploy docker file :-
+Build :- docker build -t fileanalysis_ui .
+Run :- docker run -p 4000:4000 -e REACT_APP_ENV=development fileanalysis_ui
+
+
 
 
 
