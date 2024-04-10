@@ -1,0 +1,7 @@
+.scrollable-text-container {
+    overflow-y: scroll;
+    max-height: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+}

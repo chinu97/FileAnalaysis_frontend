@@ -1,8 +1,9 @@
 import React from 'react';
+import './ScrollableText.css'; // Import the CSS file
 
 const ScrollableText = ({ text }) => {
     return (
-        <div style={{ overflowY: 'scroll', maxHeight: '400px', padding: '10px', border: '1px solid #ccc' }}>
+        <div className="scrollable-text-container">
             {text}
         </div>
     );

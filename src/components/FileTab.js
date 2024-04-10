@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(4),
-        maxWidth: '90%', // Adjust the maximum width here
-        width: '90%', // Adjust the width here
-        maxHeight: '90%', // Adjust the maximum height here
-        overflowY: 'auto', // Enable vertical scrolling if content exceeds height
-        position: 'relative', // Set position to relative
+        maxWidth: '90%',
+        width: '90%',
+        maxHeight: '90%',
+        overflowY: 'auto',
+        position: 'relative',
     },
     closeButton: {
         position: 'absolute',
@@ -80,7 +80,7 @@ const FileTab = ({file}) => {
                     setDetailsError('Failed to fetch details data');
                 })
                 .finally(() => {
-                    setDetailsLoading(false); // Set loading to false after API call completes
+                    setDetailsLoading(false);
                 });
         }
     }, [detailsModalOpen]);
@@ -91,6 +91,9 @@ const FileTab = ({file}) => {
 
     const handleDetailsModalClose = () => {
         setDetailsModalOpen(false);
+        setDetailsData(null);
+        setDetailsError('');
+        setDetailsLoading(false)
     };
 
     const handleSynonymsModalOpen = () => {
@@ -99,6 +102,11 @@ const FileTab = ({file}) => {
 
     const handleSynonymsModalClose = () => {
         setSynonymsModalOpen(false);
+        setSynonymsData(null);
+        setSynonymsInput('');
+        setSynonymsError('');
+        setSynonymsLoading(false)
+
     };
 
     const handleMaskingModalOpen = () => {
@@ -107,6 +115,10 @@ const FileTab = ({file}) => {
 
     const handleMaskingModalClose = () => {
         setMaskingModalOpen(false);
+        setMaskingData(null);
+        setMaskingInput('');
+        setMaskingError('');
+        setMaskingLoading(false);
     };
 
     const handleSynonymsInputChange = (event) => {
@@ -132,7 +144,7 @@ const FileTab = ({file}) => {
                 setSynonymsError(error?.response?.data?.error);
             })
             .finally(() => {
-                setSynonymsLoading(false); // Set loading to false after API call completes
+                setSynonymsLoading(false);
             });
     };
 
@@ -151,7 +163,7 @@ const FileTab = ({file}) => {
                 console.error('Error masking text:', error);
             })
             .finally(() => {
-                setMaskingLoading(false); // Set loading to false after API call completes
+                setMaskingLoading(false);
             });
     };
 
@@ -220,7 +232,7 @@ const FileTab = ({file}) => {
                         value={synonymsInput}
                         onChange={handleSynonymsInputChange}
                     />
-                    <Button variant="contained" onClick={handleSynonymsButtonClick}>Search</Button>
+                    <Button variant="contained" onClick={handleSynonymsButtonClick}>Get Synonyms</Button>
                     {synonymsLoading && <div className={classes.loader}><CircularProgress/></div>}
                     {synonymsError &&
                         <Typography variant="body1" className={classes.errorText}>{synonymsError}</Typography>}
@@ -255,7 +267,7 @@ const FileTab = ({file}) => {
                         value={maskingInput}
                         onChange={handleMaskingInputChange}
                     />
-                    <Button variant="contained" onClick={handleMaskingButtonClick}>Search</Button>
+                    <Button variant="contained" onClick={handleMaskingButtonClick}>Mask Words</Button>
                     {maskingLoading && <div className={classes.loader}><CircularProgress/></div>}
                     {maskingError &&
                         <Typography variant="body1" className={classes.errorText}>{maskingError}</Typography>}
